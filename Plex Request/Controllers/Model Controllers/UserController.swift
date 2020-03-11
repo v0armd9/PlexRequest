@@ -48,6 +48,10 @@ class UserController {
                 return
             }
             if let record = record {
+                if record.isEmpty {
+                    completion(false)
+                    return
+                }
                 let fetchedUser = User(record: record[0])
                 self.user = fetchedUser
                 completion(true)

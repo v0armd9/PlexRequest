@@ -12,7 +12,7 @@ import CloudKit
 class MovieController {
     
     static let sharedInstance = MovieController()
-        
+    
     var fetchedMovies: [MovieResult] = []
     
     var topMovies: [MovieResult] = []
@@ -20,7 +20,7 @@ class MovieController {
     var nowPlayingMovies: [MovieResult] = []
     
     var upcomingMovies: [MovieResult] = []
-
+    
     var requestedMovies: [Movie] = []
     
     let publicDB = CKContainer.default().publicCloudDatabase
@@ -69,10 +69,48 @@ class MovieController {
                     let movie = MovieResult(title: title, rating: rating, overview: overview, poster: posterPath, backdrop_path: backdropPath, releaseDate: releaseDate, id: id)
                     arrayOfResults.append(movie)
                 }
-              completion(arrayOfResults)
+                completion(arrayOfResults)
             } catch {
                 print("There was an error decoding the data: \(error.localizedDescription)")
                 completion(nil)
+                return
+            }
+        }.resume()
+    }
+    
+    func fetchTrailerID(forTitle title: String, completion: @escaping (String) -> Void) {
+        guard let url = URL(string: "https://tastedive.com/api/similar"),
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            else {completion(""); return}
+        
+        let infoQuery = URLQueryItem(name: "info", value: "1")
+        let searchTermQuery = URLQueryItem(name: "q", value: title)
+        components.queryItems = [infoQuery, searchTermQuery]
+        guard let finalURL = components.url else {completion(""); return}
+        
+        URLSession.shared.dataTask(with: finalURL) { (data, _, error) in
+            if let error = error {
+                print("An error occured while GETting data: \(error.localizedDescription)")
+                completion("")
+                return
+            }
+            guard let data = data else {
+                completion("")
+                return
+            }
+            
+            do {
+                print(String(data:data, encoding: .utf8))
+                guard let topLevelJSON = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+                    let secondLevel = topLevelJSON["Similar"] as? [String:Any],
+                    let infoArray = secondLevel["Info"] as? [[String:Any]],
+                    let resultDict = infoArray.first,
+                    let trailerID = resultDict["yID"] as? String
+                else {completion(""); return}
+                completion(trailerID)
+            } catch {
+                print("There was an error decoding the data: \(error.localizedDescription)")
+                completion("")
                 return
             }
         }.resume()
@@ -120,7 +158,7 @@ class MovieController {
                     let movie = MovieResult(title: title, rating: rating, overview: overview, poster: posterPath, backdrop_path: backdropPath, releaseDate: releaseDate, id: id)
                     arrayOfResults.append(movie)
                 }
-              completion(arrayOfResults)
+                completion(arrayOfResults)
             } catch {
                 print("There was an error decoding the data: \(error.localizedDescription)")
                 completion(nil)
@@ -171,7 +209,7 @@ class MovieController {
                     let movie = MovieResult(title: title, rating: rating, overview: overview, poster: posterPath, backdrop_path: backdropPath, releaseDate: releaseDate, id: id)
                     arrayOfResults.append(movie)
                 }
-              completion(arrayOfResults)
+                completion(arrayOfResults)
             } catch {
                 print("There was an error decoding the data: \(error.localizedDescription)")
                 completion(nil)
@@ -222,7 +260,7 @@ class MovieController {
                     let movie = MovieResult(title: title, rating: rating, overview: overview, poster: posterPath, backdrop_path: backdropPath, releaseDate: releaseDate, id: id)
                     arrayOfResults.append(movie)
                 }
-              completion(arrayOfResults)
+                completion(arrayOfResults)
             } catch {
                 print("There was an error decoding the data: \(error.localizedDescription)")
                 completion(nil)

@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Error in \(#function): \(error.localizedDescription) /n---/n \(error)")

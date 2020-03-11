@@ -24,6 +24,8 @@ class MovieDetailViewController: UIViewController {
     
     var fandangoLink: URL?
     
+    var trailerID = ""
+    
     var movie: MovieResult? {
         didSet {
             loadViewIfNeeded()
@@ -85,6 +87,18 @@ class MovieDetailViewController: UIViewController {
         updateViews()
     }
     
+    @IBAction func watchTrailerButtonTapped(_ sender: UIButton) {
+        // fetch movieTrailer ID
+        guard let movieTitle = self.titleLabel.text else {return}
+        MovieController.sharedInstance.fetchTrailerID(forTitle: movieTitle) { (trailerID) in
+            self.trailerID = trailerID
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "toTrailerView", sender: self)                
+            }
+        }
+    }
+    
+    
     @IBAction func buyTicketButtonTapped(_ sender: UIButton) {
         guard let url = self.fandangoLink else {return}
         UIApplication.shared.open(url)
@@ -94,6 +108,7 @@ class MovieDetailViewController: UIViewController {
     @IBAction func requestButtonTapped(_ sender: UIButton) {
         self.loadingView.isHidden = false
         self.activityInd.startAnimating()
+        self.view.isUserInteractionEnabled = false
         if let movie = movie {
             MovieController.sharedInstance.createMovieWith(searchResult: movie) { (movie) in
                 if let movie = movie {
@@ -103,6 +118,8 @@ class MovieDetailViewController: UIViewController {
                         self.activityInd.stopAnimating()
                         self.requestButton.setTitle("Movie Requested!", for: .normal)
                         self.requestButton.isEnabled = false
+                        self.view.isUserInteractionEnabled = true
+                        
                     }
                 }
             }
@@ -114,7 +131,11 @@ class MovieDetailViewController: UIViewController {
                         self.loadingView.isHidden = true
                         self.activityInd.stopAnimating()
                         self.requestButton.setTitle("Show Requested!", for: .normal)
+                        self.requestButton.setTitleColor(.gray, for: .normal)
+                        self.requestButton.layer.borderColor = UIColor.gray.cgColor
                         self.requestButton.isEnabled = false
+                        self.view.isUserInteractionEnabled = true
+
                     }
                 }
             }
@@ -126,6 +147,8 @@ class MovieDetailViewController: UIViewController {
             for requestedMovie in MovieController.sharedInstance.requestedMovies {
                 if movie.id == requestedMovie.id {
                     requestButton.setTitle("Movie Already Requested", for: .normal)
+                    requestButton.setTitleColor(.gray, for: .normal)
+                    requestButton.layer.borderColor = UIColor.gray.cgColor
                     requestButton.isEnabled = false
                 }
             }
@@ -133,6 +156,8 @@ class MovieDetailViewController: UIViewController {
             for requestedShow in TVShowController.sharedInstance.requestedShows {
                 if show.id == requestedShow.id {
                     requestButton.setTitle("Show Already Requested", for: .normal)
+                    requestButton.setTitleColor(.gray, for: .normal)
+                    requestButton.layer.borderColor = UIColor.gray.cgColor
                     requestButton.isEnabled = false
                 }
             }
@@ -149,13 +174,21 @@ class MovieDetailViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         backdropImageView.alpha = 0.5
         requestButton.layer.borderWidth = 2
-        requestButton.layer.borderColor = UIColor.black.cgColor
+        guard let plexOrange = UIColor(named: "plexOrange") else {return}
+        requestButton.layer.borderColor = plexOrange.cgColor
         requestButton.layer.cornerRadius = requestButton.frame.height / 2
         requestButton.titleLabel?.textColor = .black
         
         if traitCollection.userInterfaceStyle == .dark {
-            requestButton.layer.borderColor = UIColor.white.cgColor
+            requestButton.layer.borderColor = plexOrange.cgColor
             requestButton.titleLabel?.textColor = .white
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTrailerView" {
+            guard let destinationVC = segue.destination as? YTPlayerViewController else {return}
+            destinationVC.videoID = self.trailerID
         }
     }
 }

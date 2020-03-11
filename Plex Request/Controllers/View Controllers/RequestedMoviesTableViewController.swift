@@ -16,11 +16,20 @@ class RequestedMoviesTableViewController: UITableViewController {
     @IBOutlet weak var filterButton: UIBarButtonItem!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     
-    var filtered: Bool = false
+    var filtered: Bool = true
     var isNotDoneMovieArray: [Movie] = []
     var isDoneMovieArray: [Movie] = []
     var isDoneShowArray: [TVShow] = []
     var isNotDoneShowArray: [TVShow] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let user = UserController.sharedInstance.user {
+            if user.username == "Marcus" {
+                filtered = false
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,8 +37,6 @@ class RequestedMoviesTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = 200
         self.tableView.reloadData()
-        self.filterButton.image = UIImage(systemName: "person.crop.circle")
-        self.navigationItem.title = "All Requests"
         
     }
     
@@ -60,6 +67,8 @@ class RequestedMoviesTableViewController: UITableViewController {
         isDoneShowArray = []
         isNotDoneShowArray = []
         if !filtered {
+            self.filterButton.image = UIImage(systemName: "person.crop.circle")
+            self.navigationItem.title = "All Requests"
             if !MovieController.sharedInstance.requestedMovies.isEmpty {
                 for movie in MovieController.sharedInstance.requestedMovies {
                     if movie.isDone {
@@ -83,6 +92,8 @@ class RequestedMoviesTableViewController: UITableViewController {
                 self.isDoneShowArray.sort(by: {$0.dateAdded > $1.dateAdded })
             }
         } else {
+            self.filterButton.image = UIImage(systemName: "person.crop.circle.fill")
+            self.navigationItem.title = "My Requests"
             guard let user = UserController.sharedInstance.user else {return}
             if !MovieController.sharedInstance.requestedMovies.isEmpty {
                 for movie in MovieController.sharedInstance.requestedMovies where movie.user == user.username {
@@ -112,16 +123,16 @@ class RequestedMoviesTableViewController: UITableViewController {
     
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let isDone = isDoneAction(at: indexPath)
-        let delete = deleteAction(at: indexPath)
-        if let user = UserController.sharedInstance.user {
+            if let user = UserController.sharedInstance.user {
             if user.username == "Marcus"{
-                return UISwipeActionsConfiguration(actions: [isDone, delete])
-            } else {
-                return nil
+            let isDone = isDoneAction(at: indexPath)
+            let delete = deleteAction(at: indexPath)
+                    return UISwipeActionsConfiguration(actions: [isDone, delete])
+                } else {
+                    return nil
+                }
             }
-        }
-        return nil
+            return nil
     }
     
     func isDoneAction(at indexPath: IndexPath) -> UIContextualAction {
@@ -153,10 +164,10 @@ class RequestedMoviesTableViewController: UITableViewController {
             }
             if !movieToComplete.isDone {
                 action.image = #imageLiteral(resourceName: "checkMark")
-                action.backgroundColor = .systemTeal
+                action.backgroundColor = UIColor(named: "plexOrange")
             } else {
                 action.image = #imageLiteral(resourceName: "backArrow")
-                action.backgroundColor = .systemTeal
+                action.backgroundColor = UIColor(named: "plexOrange")
             }
             return action
         } else {
@@ -213,6 +224,7 @@ class RequestedMoviesTableViewController: UITableViewController {
                 MovieController.sharedInstance.deleteMovie(recordID: movieToComplete.recordID, database: database) { (success) in
                     DispatchQueue.main.async {
                         self.refresh()
+//                        self.tableView.deleteRows(at: [indexPath], with: .automatic)
                     }
                 }
                 completion(true)
@@ -389,6 +401,4 @@ class RequestedMoviesTableViewController: UITableViewController {
             }
         }
     }
-    
-    
 }

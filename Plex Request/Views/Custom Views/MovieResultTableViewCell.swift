@@ -13,8 +13,10 @@ class MovieResultTableViewCell: UITableViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
+    @IBOutlet weak var completeIcon: UIImageView!
     
     func updateCell(movie: MovieResult) {
+        completeIcon.isHidden = true
         movieImageView?.image = nil
         movieTitleLabel.text = movie.title
         movieRatingLabel.text = "\(movie.rating)"
@@ -22,6 +24,11 @@ class MovieResultTableViewCell: UITableViewCell {
     }
     
     func updateCellForRequest(movie: Movie) {
+        if movie.isDone {
+            completeIcon.isHidden = false
+        } else {
+            completeIcon.isHidden = true
+        }
         movieImageView?.image = nil
         movieTitleLabel.text = movie.title
         movieRatingLabel.text = "\(movie.rating)"
@@ -29,6 +36,7 @@ class MovieResultTableViewCell: UITableViewCell {
     }
     
     func updateCell(show: TVShowResult) {
+        completeIcon.isHidden = true
         movieImageView.image = nil
         movieTitleLabel.text = show.name
         movieRatingLabel.text = "\(show.rating)"
@@ -36,6 +44,11 @@ class MovieResultTableViewCell: UITableViewCell {
     }
     
     func updateCellForRequest(show: TVShow) {
+        if show.isDone {
+            completeIcon.isHidden = false
+        } else {
+            completeIcon.isHidden = true
+        }
            movieImageView?.image = nil
            movieTitleLabel.text = show.name
            movieRatingLabel.text = "\(show.rating)"

@@ -43,7 +43,7 @@ class LoadingScreenViewController: UIViewController {
     }
     
     func logoPulseDown() {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.logoImageView.alpha = 0.5
             self.logoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             self.logoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(2*Double.pi))
@@ -68,7 +68,7 @@ class LoadingScreenViewController: UIViewController {
     }
     
     func logoPulseUp() {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.logoImageView.alpha = 1
             self.logoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             self.logoImageView.transform = CGAffineTransform(rotationAngle: CGFloat(2*Double.pi))

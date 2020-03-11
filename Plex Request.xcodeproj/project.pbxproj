@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5534CFC123BBD3C7002000BE /* YTPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534CFC023BBD3C7002000BE /* YTPlayerViewController.swift */; };
 		580C56E1235620380059A6F1 /* TopRatedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C56E0235620380059A6F1 /* TopRatedTableViewController.swift */; };
 		580C56E323562B630059A6F1 /* NowPlayingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C56E223562B630059A6F1 /* NowPlayingTableViewController.swift */; };
 		580C56E523564DEE0059A6F1 /* UpcomingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580C56E423564DEE0059A6F1 /* UpcomingTableViewController.swift */; };
@@ -28,11 +29,16 @@
 		5863D6252347F8EC00332D75 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863D6242347F8EC00332D75 /* SearchTableViewController.swift */; };
 		5863D62A2347FABE00332D75 /* MovieResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863D6292347FABE00332D75 /* MovieResultTableViewCell.swift */; };
 		5863D62D2348251100332D75 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863D62C2348251100332D75 /* MovieDetailViewController.swift */; };
+		586402432368DD0B00592A8E /* RequestedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586402422368DD0B00592A8E /* RequestedCollectionViewCell.swift */; };
+		586402452368DDA200592A8E /* RequestedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586402442368DDA200592A8E /* RequestedCollectionViewController.swift */; };
 		587F75E923482BF300E06C23 /* RequestedMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F75E823482BF300E06C23 /* RequestedMoviesTableViewController.swift */; };
 		58C64EB92354DEF700C363B0 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C64EB82354DEF700C363B0 /* LoadingScreenViewController.swift */; };
+		C1E8210DF5571ADFB7B6FF95 /* Pods_Plex_Request.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0221FF85E65E57F17A30C /* Pods_Plex_Request.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37304BBC84F52BCBF9664E31 /* Pods-Plex Request.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plex Request.debug.xcconfig"; path = "Target Support Files/Pods-Plex Request/Pods-Plex Request.debug.xcconfig"; sourceTree = "<group>"; };
+		5534CFC023BBD3C7002000BE /* YTPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPlayerViewController.swift; sourceTree = "<group>"; };
 		580C56E0235620380059A6F1 /* TopRatedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedTableViewController.swift; sourceTree = "<group>"; };
 		580C56E223562B630059A6F1 /* NowPlayingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTableViewController.swift; sourceTree = "<group>"; };
 		580C56E423564DEE0059A6F1 /* UpcomingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTableViewController.swift; sourceTree = "<group>"; };
@@ -57,8 +63,12 @@
 		5863D6242347F8EC00332D75 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		5863D6292347FABE00332D75 /* MovieResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResultTableViewCell.swift; sourceTree = "<group>"; };
 		5863D62C2348251100332D75 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		586402422368DD0B00592A8E /* RequestedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedCollectionViewCell.swift; sourceTree = "<group>"; };
+		586402442368DDA200592A8E /* RequestedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedCollectionViewController.swift; sourceTree = "<group>"; };
 		587F75E823482BF300E06C23 /* RequestedMoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedMoviesTableViewController.swift; sourceTree = "<group>"; };
 		58C64EB82354DEF700C363B0 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
+		6FB378258F1BB9B2AF92B728 /* Pods-Plex Request.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plex Request.release.xcconfig"; path = "Target Support Files/Pods-Plex Request/Pods-Plex Request.release.xcconfig"; sourceTree = "<group>"; };
+		F2B0221FF85E65E57F17A30C /* Pods_Plex_Request.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plex_Request.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58229A5C2310F3E800C29826 /* CloudKit.framework in Frameworks */,
+				C1E8210DF5571ADFB7B6FF95 /* Pods_Plex_Request.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +98,7 @@
 				58229A462310F3CF00C29826 /* Plex Request */,
 				58229A452310F3CF00C29826 /* Products */,
 				58229A5A2310F3E800C29826 /* Frameworks */,
+				9B4B6C27F522ABD6E6D20F66 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				58229A5B2310F3E800C29826 /* CloudKit.framework */,
+				F2B0221FF85E65E57F17A30C /* Pods_Plex_Request.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -180,7 +193,10 @@
 				580C56E0235620380059A6F1 /* TopRatedTableViewController.swift */,
 				580C56E223562B630059A6F1 /* NowPlayingTableViewController.swift */,
 				580C56E423564DEE0059A6F1 /* UpcomingTableViewController.swift */,
+				586402422368DD0B00592A8E /* RequestedCollectionViewCell.swift */,
+				586402442368DDA200592A8E /* RequestedCollectionViewController.swift */,
 				580C56E82356789D0059A6F1 /* Extensions & Helpers */,
+				5534CFC023BBD3C7002000BE /* YTPlayerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -193,6 +209,15 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		9B4B6C27F522ABD6E6D20F66 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37304BBC84F52BCBF9664E31 /* Pods-Plex Request.debug.xcconfig */,
+				6FB378258F1BB9B2AF92B728 /* Pods-Plex Request.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,9 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58229A562310F3D100C29826 /* Build configuration list for PBXNativeTarget "Plex Request" */;
 			buildPhases = (
+				049C811F237031928615DCF4 /* [CP] Check Pods Manifest.lock */,
 				58229A402310F3CF00C29826 /* Sources */,
 				58229A412310F3CF00C29826 /* Frameworks */,
 				58229A422310F3CF00C29826 /* Resources */,
+				CFEBCA39E0820EF738261E3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +294,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		049C811F237031928615DCF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plex Request-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFEBCA39E0820EF738261E3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plex Request/Pods-Plex Request-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plex Request/Pods-Plex Request-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plex Request/Pods-Plex Request-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		58229A402310F3CF00C29826 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -277,12 +346,14 @@
 				580C56E1235620380059A6F1 /* TopRatedTableViewController.swift in Sources */,
 				58243C852353B8E200C5FBAE /* TVShowController.swift in Sources */,
 				58243C812353B62C00C5FBAE /* TVShowResult.swift in Sources */,
+				586402452368DDA200592A8E /* RequestedCollectionViewController.swift in Sources */,
 				580C56EE2356BD030059A6F1 /* CreateUserViewController.swift in Sources */,
 				5863D6232347E42E00332D75 /* MovieController.swift in Sources */,
 				58229A612310F5EF00C29826 /* Movie.swift in Sources */,
 				5863D6252347F8EC00332D75 /* SearchTableViewController.swift in Sources */,
 				580C56EA2356B52C0059A6F1 /* User.swift in Sources */,
 				58229A482310F3CF00C29826 /* AppDelegate.swift in Sources */,
+				586402432368DD0B00592A8E /* RequestedCollectionViewCell.swift in Sources */,
 				5863D62D2348251100332D75 /* MovieDetailViewController.swift in Sources */,
 				5863D6212347E3DA00332D75 /* MovieSearchResult.swift in Sources */,
 				5863D62A2347FABE00332D75 /* MovieResultTableViewCell.swift in Sources */,
@@ -290,6 +361,7 @@
 				580C56E323562B630059A6F1 /* NowPlayingTableViewController.swift in Sources */,
 				580C56E523564DEE0059A6F1 /* UpcomingTableViewController.swift in Sources */,
 				587F75E923482BF300E06C23 /* RequestedMoviesTableViewController.swift in Sources */,
+				5534CFC123BBD3C7002000BE /* YTPlayerViewController.swift in Sources */,
 				58C64EB92354DEF700C363B0 /* LoadingScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +506,7 @@
 		};
 		58229A572310F3D100C29826 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37304BBC84F52BCBF9664E31 /* Pods-Plex Request.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Plex Request/Plex Request.entitlements";
@@ -447,12 +520,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DMA.Plex-Request";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		58229A582310F3D100C29826 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FB378258F1BB9B2AF92B728 /* Pods-Plex Request.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Plex Request/Plex Request.entitlements";
@@ -466,7 +540,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DMA.Plex-Request";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -17,7 +17,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        //elf.hideKeyboardWhenTappedAround()
+        //self.hideKeyboardWhenTappedAround()
         
         self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = 200
@@ -62,7 +62,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     func fetch() {
         guard let searchTerm = searchBar.text, !searchTerm.isEmpty else {return}
         searchBar.searchTextField.resignFirstResponder()
-        if typeSegmentedControl.selectedSegmentIndex == 0 {
+        if typeSegmentedControl.selectedSegmentIndex == 0 && MovieController.sharedInstance.fetchedMovies.isEmpty {
             MovieController.sharedInstance.fetchMovieFor(term: searchTerm) { (results) in
                 if let results = results {
                     MovieController.sharedInstance.fetchedMovies = results
@@ -79,7 +79,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     }
                 }
             }
-        } else if typeSegmentedControl.selectedSegmentIndex == 1 {
+        } else if typeSegmentedControl.selectedSegmentIndex == 1 && TVShowController.sharedInstance.fetchedShows.isEmpty  {
             TVShowController.sharedInstance.fetchShowFor(term: searchTerm) { (results) in
                 if let results = results {
                     TVShowController.sharedInstance.fetchedShows = results
@@ -96,6 +96,8 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                     }
                 }
             }
+        } else {
+            self.tableView.reloadData()
         }
     }
 

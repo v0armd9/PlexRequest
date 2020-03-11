@@ -30,7 +30,7 @@ class CreateUserViewController: UIViewController {
     }
     
     func updateViews() {
-        continueButton.layer.borderColor = UIColor.systemYellow.cgColor
+        continueButton.layer.borderColor = UIColor(named: "plexOrange")?.cgColor
         continueButton.layer.borderWidth = 2
         continueButton.layer.cornerRadius = continueButton.frame.height / 2
     }
